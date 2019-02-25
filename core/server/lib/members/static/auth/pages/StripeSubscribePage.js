@@ -104,7 +104,7 @@ export default class StripePaymentPage extends Component {
         const publicKey = stripeConfig.config.publicKey || '';
         return (
             <div class="gm-subscribe-page">
-                <FormHeader title="Subscribe" error={ error } errorText="Unable to confirm payment" />
+                <FormHeader title="Subscribe" error={error} errorText={error} />
                 <div className="gm-subscribe-form-wrapper">
                     <div className="gm-modal-form gm-subscribe-form">
                         <StripeProvider apiKey={publicKey}>

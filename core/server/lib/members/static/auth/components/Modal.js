@@ -46,12 +46,14 @@ export default class Modal extends Component {
     renderSignupPage({error, stripeConfig, members, signup, closeModal}) {
 
         if (stripeConfig) {
-            const createAccountWithSubscription = (data) => members.signup(data).then(() => {
+            const createAccountWithSubscription = (data) => members.signup(data).then((success) => {
                 members.createSubscription(data).then((success) => {
                     this.close();
                 }, (error) => {
-                    this.setState({ error });
+                    this.setState({ error: "Unable to confirm payment" });
                 });
+            }, (error) => {
+                this.setState({ error: "Unable to signup" });
             });
             return <StripeSubscribePage stripeConfig={stripeConfig} error={error} hash="signup" handleSubmit={createAccountWithSubscription} handleClose={closeModal} />
 
