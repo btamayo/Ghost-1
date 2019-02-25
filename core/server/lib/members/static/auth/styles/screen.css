@@ -164,6 +164,14 @@ a:hover {
 }
 
 /* Custom forms */
+.gm-form-section {
+    margin: 0;
+    padding: 0;
+    font-size: var(--text-l);
+    font-weight: 400;
+    color: var(--grey-d1);
+}
+
 .gm-floating-input .gm-forgot-input {
     padding-right: 60px;
 }
@@ -241,6 +249,14 @@ a:hover {
     display: flex;
     justify-items: start;
     animation: showPlansContainer 0.6s ease 0.1s forwards;
+}
+
+.gm-upgrade-page .gm-plans-container {
+    width: 100%;
+    justify-content: stretch;
+    flex-direction: column;
+    animation: none;
+    margin-top: -4px;
 }
 
 .gm-plans-divider {
@@ -409,4 +425,8 @@ a:hover {
 
 .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
+}
+
+.gm-upgrade-page .StripeElement {
+    border-radius: 6px;
 }
