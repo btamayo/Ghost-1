@@ -203,13 +203,13 @@ a:hover {
 }
 
 @keyframes showPlans {
-    from {left: -250px;}
+    from {left: -280px;}
     to {left: 40px;}
 }
 
 @keyframes showPlansContainer {
     from {width: 0px;}
-    to {width: 290px;}
+    to {width: 380px;}
 }
 
 @keyframes showPlansDivider {
@@ -303,11 +303,11 @@ a:hover {
 }
 
 .gm-plans {
-    width: 250px;
+    width: 270px;
     margin: 70px 0 0;
     position: absolute;
     top: -5px;
-    left: -250px;
+    left: -270px;
     animation: showPlans 0.75s ease 0.25s forwards;
 }
 
