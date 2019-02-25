@@ -7,9 +7,16 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    let style = {
+      base: {
+        '::placeholder': {
+          color: '#aab7c4'
+        }
+      }
+    };
     return (
       <div className="gm-form-element">
-        <CardElement />
+        <CardElement style={style} />
       </div>
     );
   }
