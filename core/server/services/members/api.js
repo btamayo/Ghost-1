@@ -5,6 +5,7 @@ const MembersApi = require('../../lib/members');
 const common = require('../../lib/common');
 const models = require('../../models');
 const mail = require('../mail');
+const blogIcon = require('../../lib/image/blog-icon');
 
 function createMember({name, email, password}) {
     return models.Member.add({
@@ -149,6 +150,8 @@ function sendEmail(member, {token}) {
     });
 }
 
+const defaultBlogTitle = settingsCache.get('title') ? settingsCache.get('title').replace(/"/g, '\\"') : 'Publication';
+const blogIconUrl = blogIcon.getIconUrl();
 const api = MembersApi({
     authConfig: {
         issuer,
@@ -160,6 +163,10 @@ const api = MembersApi({
     paymentConfig: {
         processors: membersSettings.paymentProcessors
     },
+    siteConfig: {
+        title: defaultBlogTitle,
+        icon: blogIconUrl
+    },
     validateAudience,
     createMember,
     getMember,
@@ -170,10 +177,20 @@ const api = MembersApi({
 });
 
 const updateSettingFromModel = function updateSettingFromModel(settingModel) {
-    if (settingModel.get('key') === 'members_subscription_settings') {
+    if (settingModel.get('key') === 'members_subscription_settings'
+            || settingModel.get('key') === 'title'
+        || settingModel.get('key') === 'icon') {
         let membersSettings = parseMembersSettings();
+        const defaultBlogTitle = settingsCache.get('title') ? settingsCache.get('title').replace(/"/g, '\\"') : 'Publication';
+        const blogIconUrl = blogIcon.getIconUrl();
         api.reconfigureSettings({
-            processors: membersSettings.paymentProcessors
+            paymentConfig: {
+                processors: membersSettings.paymentProcessors
+            },
+            siteConfig: {
+                title: defaultBlogTitle,
+                icon: blogIconUrl
+            }
         });
     }
 };

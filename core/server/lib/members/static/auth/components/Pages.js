@@ -32,16 +32,21 @@ export default class Pages extends Component {
         });
     }
 
-    render({ children, className, onClick, stripeConfig }, state) {
+    render({ children, className, onClick, stripeConfig, siteConfig }, state) {
         let modalClassName = "gm-modal gm-auth-modal";
         if (state.hash === 'signup' && stripeConfig) {
             modalClassName += " gm-subscribe-modal"
         }
+        let iconUrl = siteConfig && siteConfig.icon;
+        let title = (siteConfig && siteConfig.title) || "";
+        let iconStyle = iconUrl ? {
+            backgroundImage: `url(${iconUrl})`
+        } : {};
         return (
             <div className={className}>
                 <div className="gm-modal-header">
-                    <div className="gm-logo"></div>
-                    <h2>Expensive Publication</h2>
+                    <div className="gm-logo" style={iconStyle}></div>
+                    <h2>{title}</h2>
                 </div>
                 <div className="gm-modal-close" onClick={ onClick }>{IconClose}</div>
                 <div className="gm-modal-container">

@@ -24,8 +24,8 @@ export default class Modal extends Component {
         if (this.state.loadingConfig) {
             return;
         }
-        this.context.members.getConfig().then(paymentConfig => {
-            this.setState({ paymentConfig, loadingConfig: false });
+        this.context.members.getConfig().then(({paymentConfig, siteConfig}) => {
+            this.setState({ paymentConfig, siteConfig, loadingConfig: false });
         }).catch((error) => {
             this.setState({ error, loadingConfig: false });
         });
@@ -76,7 +76,7 @@ export default class Modal extends Component {
     }
 
     render(props, state) {
-        const { containerClass, error, loadingConfig, paymentConfig } = state;
+        const { containerClass, error, loadingConfig, paymentConfig, siteConfig } = state;
         const { members } = this.context;
 
         const closeModal = () => this.close();
@@ -100,7 +100,7 @@ export default class Modal extends Component {
             );
         }
         return (
-            <Pages className={containerClass} onChange={clearError} onClick={closeModal} stripeConfig={stripeConfig}>
+            <Pages className={containerClass} onChange={clearError} onClick={closeModal} stripeConfig={stripeConfig} siteConfig={siteConfig}>
                 <SigninPage error={error} hash="" handleSubmit={signup} />
                 <SigninPage error={error} hash="signin" handleSubmit={signin} />
                 {this.renderSignupPage({error, stripeConfig, members, signup, closeModal})}
