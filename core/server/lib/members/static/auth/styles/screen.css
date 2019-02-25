@@ -397,6 +397,30 @@ a:hover {
     }
 }
 
+.gm-powered-by {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 32px;
+}
+
+.gm-powered-by a {
+    display: flex;
+    align-items: center;
+}
+
+.gm-powered-by svg {
+    height: 18px;
+    width: 72px;
+}
+
+.gm-powered-by span {
+    display: inline-block;
+    margin-left: 6px;
+    margin-bottom: 1px;
+    color: var(--grey-d1);
+}
+
 /**
  * The CSS shown here will not be introduced in the Quickstart guide, but shows
  * how you can use CSS to style your Element's container.
