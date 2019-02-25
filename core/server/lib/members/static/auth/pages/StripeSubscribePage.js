@@ -79,13 +79,13 @@ export default class StripePaymentPage extends Component {
         })
     }
 
-    renderPlans(plans) {
+    renderPlans(plans, title, iconStyle) {
         return (
             <div className="gm-plans" onChange={(e) => this.changePlan(e)}>
                 <div className="gm-publication-info">
-                    <div className="gm-logo"></div>
+                    <div className="gm-logo" style={iconStyle}></div>
                     <div className="gm-publication-name">
-                        <h2>Expensive Publication</h2>
+                        <h2>{title}</h2>
                         <span>Subscription</span>
                     </div>
                 </div>
@@ -96,16 +96,22 @@ export default class StripePaymentPage extends Component {
         );
     }
 
-    renderPlansSection() {
+    renderPlansSection(title, iconStyle) {
         return (
             <div className="gm-plans-container">
-                {this.renderPlans(this.plans)}
+                {this.renderPlans(this.plans, title, iconStyle)}
             </div>
         )
     }
 
-    render({ error, handleSubmit, stripeConfig }) {
+    render({ error, handleSubmit, stripeConfig, siteConfig }) {
         const publicKey = stripeConfig.config.publicKey || '';
+        let iconUrl = siteConfig && siteConfig.icon;
+        let title = (siteConfig && siteConfig.title) || "Ghost Publication";
+        let iconStyle = iconUrl ? {
+            backgroundImage: `url(${iconUrl})`,
+            backgroundSize: `44px`
+        } : {};
         return (
             <div class="gm-subscribe-page">
                 <div className="gm-subscribe-form-wrapper">
@@ -121,7 +127,7 @@ export default class StripePaymentPage extends Component {
                         </div>
                     </div>
                     <div class="gm-plans-divider"></div>
-                    {this.renderPlansSection()}
+                    {this.renderPlansSection(title, iconStyle)}
                 </div>
             </div>
         )

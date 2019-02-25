@@ -43,7 +43,7 @@ export default class Modal extends Component {
         });
     }
 
-    renderSignupPage({error, stripeConfig, members, signup, closeModal}) {
+    renderSignupPage({error, stripeConfig, members, signup, closeModal, siteConfig}) {
 
         if (stripeConfig) {
             const createAccountWithSubscription = (data) => members.signup(data).then((success) => {
@@ -55,7 +55,7 @@ export default class Modal extends Component {
             }, (error) => {
                 this.setState({ error: "Unable to signup" });
             });
-            return <StripeSubscribePage stripeConfig={stripeConfig} error={error} hash="signup" handleSubmit={createAccountWithSubscription} handleClose={closeModal} />
+            return <StripeSubscribePage stripeConfig={stripeConfig} error={error} hash="signup" handleSubmit={createAccountWithSubscription} handleClose={closeModal} siteConfig={siteConfig} />
 
         }
         return (
@@ -103,7 +103,7 @@ export default class Modal extends Component {
             <Pages className={containerClass} onChange={clearError} onClick={closeModal} stripeConfig={stripeConfig} siteConfig={siteConfig}>
                 <SigninPage error={error} hash="" handleSubmit={signup} />
                 <SigninPage error={error} hash="signin" handleSubmit={signin} />
-                {this.renderSignupPage({error, stripeConfig, members, signup, closeModal})}
+                {this.renderSignupPage({error, stripeConfig, members, signup, closeModal, siteConfig})}
                 {this.renderUpgradePage(props, state)}
                 <RequestPasswordResetPage error={error} hash="request-password-reset" handleSubmit={requestReset} />
                 <PasswordResetSentPage error={ error } hash="password-reset-sent" handleSubmit={closeModal} />

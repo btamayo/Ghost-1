@@ -38,9 +38,10 @@ export default class Pages extends Component {
             modalClassName += " gm-subscribe-modal"
         }
         let iconUrl = siteConfig && siteConfig.icon;
-        let title = (siteConfig && siteConfig.title) || "";
+        let title = (siteConfig && siteConfig.title) || "Ghost Publication";
         let iconStyle = iconUrl ? {
-            backgroundImage: `url(${iconUrl})`
+            backgroundImage: `url(${iconUrl})`,
+            backgroundSize: `38px`
         } : {};
         return (
             <div className={className}>
