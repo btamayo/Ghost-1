@@ -30,6 +30,10 @@ class PaymentForm extends Component {
         });
     };
 
+    onClick = () => {
+        this.props.stripe.createToken({ name: name });
+    }
+
     render() {
         return (
             <Form bindTo="request-password-reset" onSubmit={(data) => this.handleSubmit(data)}>
@@ -37,7 +41,7 @@ class PaymentForm extends Component {
                 <EmailInput bindTo="email" />
                 <PasswordInput bindTo="password" />
                 <CheckoutForm />
-                <FormSubmit label="Confirm payment" />
+                <FormSubmit label="Confirm payment" onClick={() => this.onClick()}/>
             </Form>
         );
     }
