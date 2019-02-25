@@ -10,7 +10,7 @@ class CheckoutForm extends Component {
         let style = {
             base: {
                 '::placeholder': {
-                    color: '#B8C2CC',
+                    color: '#8795A1',
                     fontSize: '15px'
                 }
             },

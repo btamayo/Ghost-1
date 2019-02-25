@@ -220,7 +220,7 @@ select:-webkit-autofill:active {
 ::-moz-placeholder,
 :-ms-input-placeholder,
 :-moz-placeholder {
-    color: var(--grey);
+    color: var(--grey-d1);
 }
 
 .gm-form-element {
@@ -274,7 +274,7 @@ select:-webkit-autofill:active {
 }
 
 .gm-input i svg path {
-    stroke: var(--grey);
+    stroke: var(--grey-d1);
     transition: stroke var(--animation-speed-base) ease-in-out;
 }
 
