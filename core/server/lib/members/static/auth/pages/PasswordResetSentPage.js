@@ -10,6 +10,7 @@ export default ({ error, handleSubmit }) => (
             <div className="gm-reset-sent">
                 <p>We’ve sent a recovery email to your inbox. Follow the link in the email to reset your password.</p>
             </div>
+            <FormSubmit label="Close" />
         </Form>
     </div>
 );

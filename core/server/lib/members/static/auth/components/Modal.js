@@ -106,7 +106,7 @@ export default class Modal extends Component {
                 {this.renderSignupPage({error, stripeConfig, members, signup, closeModal})}
                 {this.renderUpgradePage(props, state)}
                 <RequestPasswordResetPage error={error} hash="request-password-reset" handleSubmit={requestReset} />
-                <PasswordResetSentPage error={error} hash="password-reset-sent" handleSubmit={requestReset} />
+                <PasswordResetSentPage error={ error } hash="password-reset-sent" handleSubmit={closeModal} />
                 <ResetPasswordPage error={error} hash="reset-password" handleSubmit={resetPassword} />
             </Pages>
         );

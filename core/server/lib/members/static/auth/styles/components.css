@@ -348,12 +348,13 @@ select:-webkit-autofill:active {
 }
 
 .gm-form-errortext {
-    color: var(--white);
+    color: var(--red);
     letter-spacing: 0.4px;
     margin: 24px -2px 0px;
-    background: color-mod(var(--red) a(1));
-    padding: 11px 14px;
-    font-weight: 500;
+    background: color-mod(var(--red) a(0.1));
+    border: 1px solid color-mod(var(--red) a(0.4));
+    padding: 13px 14px;
+    font-weight: 400;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -369,5 +370,5 @@ select:-webkit-autofill:active {
 }
 
 .gm-form-errortext i svg path {
-    stroke: var(--white);
+    stroke: var(--red);
 }
