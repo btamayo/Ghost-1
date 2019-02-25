@@ -348,7 +348,7 @@ select:-webkit-autofill:active {
 }
 
 .gm-form-errortext {
-    color: var(--red);
+    color: #FF7254;
     letter-spacing: 0.4px;
     margin: 24px -2px 0px;
     background: color-mod(var(--red) a(0.1));
@@ -370,5 +370,5 @@ select:-webkit-autofill:active {
 }
 
 .gm-form-errortext i svg path {
-    stroke: var(--red);
+    stroke: #FF7254;
 }
