@@ -417,11 +417,11 @@ a:hover {
 }
 
 .StripeElement--focus {
-    box-shadow: 0 0 6px rgba(62, 176, 239, 0.3), 0 0 0px 40px #FFF inset;
+    /* box-shadow: 0 0 6px rgba(62, 176, 239, 0.3), 0 0 0px 40px #FFF inset; */
 }
 
 .StripeElement--invalid {
-    background: color-mod(var(--red) a(0.02))
+    background: #FEEBE6;
 }
 
 .StripeElement--webkit-autofill {
