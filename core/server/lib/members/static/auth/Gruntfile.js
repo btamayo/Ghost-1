@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
         shell: {
             'npm-install': {
-                command: 'yarn install'
+                command: 'npm install'
             },
 
             preact: {
