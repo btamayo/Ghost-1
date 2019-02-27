@@ -2,7 +2,7 @@ const debug = require('ghost-ignition').debug('api:shared:http');
 const shared = require('../shared');
 const models = require('../../models');
 
-const http = (apiImpl, apiType) => {
+const http = (apiImpl) => {
     return (req, res, next) => {
         debug('request');
 
@@ -36,8 +36,7 @@ const http = (apiImpl, apiType) => {
                 user: user,
                 integration: integration,
                 member: (req.member || null)
-            },
-            apiType
+            }
         });
 
         frame.configure({
@@ -79,8 +78,12 @@ const http = (apiImpl, apiType) => {
                 debug('json response');
                 res.json(result || {});
             })
-            .catch(({err, docName, method}) => {
-                req.frameOptions = {docName, method};
+            .catch((err) => {
+                req.frameOptions = {
+                    docName: frame.docName,
+                    method: frame.method
+                };
+
                 next(err);
             });
     };

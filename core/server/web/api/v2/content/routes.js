@@ -8,7 +8,7 @@ module.exports = function apiRoutes() {
 
     router.options('*', cors());
 
-    const http = apiImpl => apiv2.http(apiImpl, 'content');
+    const http = apiv2.http;
 
     // ## Posts
     router.get('/posts', mw.authenticatePublic, http(apiv2.postsPublic.browse));
@@ -21,9 +21,9 @@ module.exports = function apiRoutes() {
     router.get('/pages/slug/:slug', mw.authenticatePublic, http(apiv2.pagesPublic.read));
 
     // ## Users
-    router.get('/authors', mw.authenticatePublic, http(apiv2.authors.browse));
-    router.get('/authors/:id', mw.authenticatePublic, http(apiv2.authors.read));
-    router.get('/authors/slug/:slug', mw.authenticatePublic, http(apiv2.authors.read));
+    router.get('/authors', mw.authenticatePublic, http(apiv2.authorsPublic.browse));
+    router.get('/authors/:id', mw.authenticatePublic, http(apiv2.authorsPublic.read));
+    router.get('/authors/slug/:slug', mw.authenticatePublic, http(apiv2.authorsPublic.read));
 
     // ## Tags
     router.get('/tags', mw.authenticatePublic, http(apiv2.tagsPublic.browse));
